@@ -1048,7 +1048,7 @@ college_earnings &lt;- read_csv(&quot;~/college_earnings.csv&quot;)
 <pre><code class="r">qplot(SAT_Average, data=college_earnings, binwidth=50)
 </code></pre>
 
-<p>You can also use a <code>tbl_df</code> object in place of the data frame. Or, if you want to plot a vector already in your <em>Global Environment</em>, you do not need the <code>data</code> argument.</p>
+<p>The <code>data</code> argument specifies the data frame or tibble that your data is in. If you want to plot a vector already in your <em>Global Environment</em>, you do not need the <code>data</code> argument.</p>
 
 <p>The <code>binwidth</code> argument indicates the bin size. You can alternatively include a <code>bins</code> argument to indicate how many bins to use instead of a bin size.</p>
 
@@ -1237,8 +1237,8 @@ function commandsForSlide(indexh) {
       transition: 'linear',
       transitionSpeed: 'default',
       rtl: false,
-      width: 900,
-      height: 760,
+      width: 1080,
+      height: 800,
     
       dependencies: []
     });
