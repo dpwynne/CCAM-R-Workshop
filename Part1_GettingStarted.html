@@ -1086,6 +1086,26 @@ print(my.data.frame)
 <section data-transition="linear" data-transition-speed="default">
 <h3>Some Useful Commands</h3>
 <div class="slideContent" >
+<p>What happens if you use <code>dim()</code> on a vector or <code>length()</code> on a data frame?</p>
+
+<pre><code class="r">dim(some.names)
+</code></pre>
+
+<pre><code>NULL
+</code></pre>
+
+<pre><code class="r">length(my.data.frame)
+</code></pre>
+
+<pre><code>[1] 3
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Some Useful Commands</h3>
+<div class="slideContent" >
 <p>Preview the first six entries in a vector, or the first six rows of a data frame, by using <code>head()</code>:</p>
 
 <pre><code class="r">up.to.eight &lt;- seq(1, 8)  # 1 to 8
@@ -1105,26 +1125,6 @@ head(up.to.eight)
 4           4
 5           5
 6           6
-</code></pre>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Some Useful Commands</h3>
-<div class="slideContent" >
-<p>What happens if you use <code>dim()</code> on a vector or <code>length()</code> on a data frame?</p>
-
-<pre><code class="r">dim(some.names)
-</code></pre>
-
-<pre><code>NULL
-</code></pre>
-
-<pre><code class="r">length(my.data.frame)
-</code></pre>
-
-<pre><code>[1] 3
 </code></pre>
 
 </div>
@@ -1203,12 +1203,8 @@ View(college_earnings)
 <ul>
 <li>If you want to change the variable name, locate the <em>Name</em> section under <em>Import Options</em> in the bottom left and type a new name in the box.</li>
 <li>Click <em>Import</em> and the imported data should pop up in a new window in the <em>Source</em> (top left) section of RStudio.</li>
-<li>When RStudio reads the file into R, it will store it as a <code>tbl_df</code> object and give it your desired variable name. A <code>tbl_df</code> object is like a data frame but has some slightly different properties.</li>
-<li>We&#39;ll convert it to a data frame for now:</li>
+<li>When RStudio reads the file into R, it will store it as a <code>tbl_df</code> object (a &ldquo;tibble&rdquo;) and give it your desired variable name. A tibble is like a data frame but has some slightly different properties.</li>
 </ul>
-
-<pre><code class="r">college_earnings &lt;- data.frame(college_earnings)
-</code></pre>
 
 </div>
 
@@ -1240,18 +1236,20 @@ View(college_earnings)
 <section data-transition="linear" data-transition-speed="default">
 <h3>Subsetting a Variable</h3>
 <div class="slideContent" >
-<p>There are a number of different ways to subset a data frame, depending on what we want to extract.</p>
+<p>There are a number of different ways to subset a data frame or tibble, depending on what we want to extract.</p>
 
 <p>To subset specific rows and columns:</p>
 
 <pre><code class="r">college_earnings[c(4:6, 9), c(1, 3)]  # rows 4 through 6 and 9, columns 1 and 3
 </code></pre>
 
-<pre><code>                            Name SAT_Average
-4    University of South Alabama        1064
-5                Troy University         990
-6 Arizona State University-Tempe        1145
-9         University of Arkansas        1156
+<pre><code># A tibble: 4 × 2
+                            Name SAT_Average
+                           &lt;chr&gt;       &lt;int&gt;
+1    University of South Alabama        1064
+2                Troy University         990
+3 Arizona State University-Tempe        1145
+4         University of Arkansas        1156
 </code></pre>
 
 </div>
@@ -1266,14 +1264,13 @@ View(college_earnings)
 print(arizona)
 </code></pre>
 
-<pre><code>                            Name Undergraduates SAT_Average
-6 Arizona State University-Tempe          38480        1145
-7          University of Arizona          31399        1106
-8    Northern Arizona University          22011        1050
-  Median_Earnings
-6           45200
-7           44400
-8           38800
+<pre><code># A tibble: 3 × 4
+                            Name Undergraduates SAT_Average
+                           &lt;chr&gt;          &lt;int&gt;       &lt;int&gt;
+1 Arizona State University-Tempe          38480        1145
+2          University of Arizona          31399        1106
+3    Northern Arizona University          22011        1050
+# ... with 1 more variables: Median_Earnings &lt;int&gt;
 </code></pre>
 
 </div>
@@ -1288,7 +1285,9 @@ print(arizona)
 head(Undergrads_SAT)
 </code></pre>
 
-<pre><code>  Undergraduates SAT_Average
+<pre><code># A tibble: 6 × 2
+  Undergraduates SAT_Average
+           &lt;int&gt;       &lt;int&gt;
 1          11200        1146
 2          28692        1171
 3          19761        1215
@@ -1308,9 +1307,11 @@ head(Undergrads_SAT)
 <pre><code class="r">arizona[-1, -2]  # exclude the first row and second column
 </code></pre>
 
-<pre><code>                         Name SAT_Average Median_Earnings
-7       University of Arizona        1106           44400
-8 Northern Arizona University        1050           38800
+<pre><code># A tibble: 2 × 3
+                         Name SAT_Average Median_Earnings
+                        &lt;chr&gt;       &lt;int&gt;           &lt;int&gt;
+1       University of Arizona        1106           44400
+2 Northern Arizona University        1050           38800
 </code></pre>
 
 </div>
@@ -1319,19 +1320,20 @@ head(Undergrads_SAT)
 <section data-transition="linear" data-transition-speed="default">
 <h3>The Atomic Operator $</h3>
 <div class="slideContent" >
-<p>The <code>$</code> operator selects the column in a data frame that has that particular variable name:</p>
+<p>The <code>$</code> operator selects the column in a data frame or tibble that has that particular variable name:</p>
 
-<pre><code class="r">my.data.frame$birth.year
+<pre><code class="r">arizona$Name
 </code></pre>
 
-<pre><code>[1] 1809 1929 1917 1925
+<pre><code>[1] &quot;Arizona State University-Tempe&quot; &quot;University of Arizona&quot;         
+[3] &quot;Northern Arizona University&quot;   
 </code></pre>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Subsetting Cautions</h3>
+<h3>Subsetting Data Frames</h3>
 <div class="slideContent" >
 <p>We can also subset specific data frames without using a comma. In this case, the numbers inside the square brackets represent the column numbers of the data frame:</p>
 
@@ -1355,7 +1357,7 @@ head(Undergrads_SAT)
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Subsetting Cautions</h3>
+<h3>Subsetting Data Frames</h3>
 <div class="slideContent" >
 <pre><code class="r">my.data.frame[, 3]
 </code></pre>
@@ -1389,7 +1391,7 @@ head(Undergrads_SAT)
 <div class="slideContent" >
 <p>When R has the opportunity to reduce the dimensionality of a variable, it will. When you selected a specific column using the second and third commands, the resulting output no longer needed the column dimension, so R converted it to a vector.</p>
 
-<p>To tell R to keep your single-column subset as a data frame, either use the first syntax, or use the following syntax:</p>
+<p>To keep the data frame, use either the first command or the following syntax:</p>
 
 <pre><code class="r">my.data.frame[, 3, drop=FALSE]
 </code></pre>
@@ -1399,6 +1401,36 @@ head(Undergrads_SAT)
 2       1968
 3       1963
 4       1968
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Subsetting Tibbles</h3>
+<div class="slideContent" >
+<p>Tibbles do not get converted to vectors automatically:</p>
+
+<pre><code class="r">head(college_earnings[, 3])
+</code></pre>
+
+<pre><code># A tibble: 6 × 1
+  SAT_Average
+        &lt;int&gt;
+1        1146
+2        1171
+3        1215
+4        1064
+5         990
+6        1145
+</code></pre>
+
+<p>But you can still get a vector out using <code>$</code>:</p>
+
+<pre><code class="r">head(college_earnings$SAT_Average)
+</code></pre>
+
+<pre><code>[1] 1146 1171 1215 1064  990 1145
 </code></pre>
 
 </div>
