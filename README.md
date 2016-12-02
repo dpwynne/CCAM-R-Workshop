@@ -11,3 +11,4 @@ Part 4: More Statistics with R
 
 college_earnings.csv: data file we will work with in Parts 1-3
 
+draw_socks.R: mostly empty R script for you to complete in Part 4
