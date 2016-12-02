@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>R Workshop Part 4: More Statistics with R</title>
+  <title>R Workshop Part 4: More Statistics With R</title>
     
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -784,7 +784,7 @@ hljs.initHighlightingOnLoad();
   <div class="slides">
 
 <section data-state="section" data-transition="linear" data-transition-speed="default">
-<h1>R Workshop Part 4: More Statistics with R</h1><p>Dwight Wynne<br/>December 2, 2016</p>
+<h1>R Workshop Part 4: More Statistics With R</h1><p>Dwight Wynne<br/>December 2, 2016</p>
 
 <div class="slideContent" >
 <p>California State University, Fullerton<br/>
@@ -1349,7 +1349,7 @@ t.test(data1, mu = 12, alternative = &quot;l&quot;)  # Ha: mu &lt; 12
 <pre><code class="r">rbinom(20, size = 30, prob = 0.8)  # generate 20 random values from B(30, 0.8)
 </code></pre>
 
-<pre><code> [1] 25 23 24 25 20 26 26 23 24 27 26 23 25 23 24 16 20 26 24 26
+<pre><code> [1] 22 23 23 25 24 24 25 24 24 24 23 27 24 21 25 24 20 21 23 22
 </code></pre>
 
 </div>
@@ -1494,7 +1494,7 @@ t.test(data1, mu = 12, alternative = &quot;l&quot;)  # Ha: mu &lt; 12
 <pre><code class="r">runif(5)  # generates 5 random numbers on [0, 1]
 </code></pre>
 
-<pre><code>[1] 0.6878360 0.5303738 0.9479817 0.2781294 0.7902251
+<pre><code>[1] 0.11457219 0.85229396 0.40253728 0.44009421 0.07601831
 </code></pre>
 
 <p>To generate a random counting number, use:</p>
@@ -1502,7 +1502,7 @@ t.test(data1, mu = 12, alternative = &quot;l&quot;)  # Ha: mu &lt; 12
 <pre><code class="r">sample.int(100, size = 8)  # generates 8 random numbers between 1 and 100
 </code></pre>
 
-<pre><code>[1] 63 56 98 29 75 80 95 34
+<pre><code>[1] 57 96 12 59 32 84 76 75
 </code></pre>
 
 </div>
@@ -1517,13 +1517,13 @@ t.test(data1, mu = 12, alternative = &quot;l&quot;)  # Ha: mu &lt; 12
 sample(heights, size = 3)  # sample 3 heights without replacement
 </code></pre>
 
-<pre><code>[1] 71 64 59
+<pre><code>[1] 74 62 59
 </code></pre>
 
 <pre><code class="r">sample(heights, size = 3, replace = TRUE)  # sample 3 heights with replacement
 </code></pre>
 
-<pre><code>[1] 78 62 74
+<pre><code>[1] 64 71 78
 </code></pre>
 
 </div>
@@ -1707,7 +1707,7 @@ for (i in 1:length(bootstrap.means)){
 print(bootstrap.means)
 </code></pre>
 
-<pre><code>[1] 1108.086 1113.750 1111.068 1105.218
+<pre><code>[1] 1104.441 1118.155 1097.995 1084.127
 </code></pre>
 
 </div>
